@@ -1,19 +1,41 @@
 package models;
 
-public class OperatorLeaft extends ExpressionMathematical
+public class OperatorLeaft extends InfixExpression
 {
+	private Operator operator;
 
-	private String operator;
-
-	public OperatorLeaft(String operator)
+	public OperatorLeaft(Operator operator)
 	{
-		this.operator=operator;
+		this.operator = operator;
 	}
 
-	@Override
+	public Double evaluate(Double number1, Double number2)
+	{
+		return operator.perform(number1, number2);
+	}
+
+	@ Override
 	public String toString()
 	{
-		return operator;
+		return operator.getOperator();
 	}
-	
+
+	@ Override
+	public PostFixExpression toPostFix()
+	{
+		return null;
+	}
+
+	@ Override
+	public boolean isValid()
+	{
+		return false;
+	}
+
+	@ Override
+	public Type getType()
+	{
+		return Type.OPERATOR;
+	}
+
 }
