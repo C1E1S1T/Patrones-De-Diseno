@@ -160,6 +160,15 @@ class ExpressioMathematicalTest
 		Double expected = 28.0;
 		assertEquals(expected,actual);
 	}
+	
+	@ Test
+	void testStringToExpression_caseTwoOperations_expectedToString()
+	{
+		String expected = "(2+2*2)";
+		InfixExpressionComposite expression = new InfixExpressionComposite(expected);
+		String actual = expression.toString();
+		assertEquals(expected,actual);
+	}
 
 
 }

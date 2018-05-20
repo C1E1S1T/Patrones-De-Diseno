@@ -10,33 +10,32 @@ public class PostFixExpression
 
 	public PostFixExpression(List<InfixExpression> expressions)
 	{
-		this.expressions=expressions;
+		this.expressions = expressions;
 	}
 
 	@ SuppressWarnings ({ "rawtypes", "incomplete-switch" })
 	public Double evaluate()
 	{
-		Stack <Double> result = new Stack<>();
-		for(InfixExpression expression : expressions)
+		Stack<Double> result = new Stack<>();
+		for (InfixExpression expression : expressions)
 		{
-			switch(expression.getType())
+			switch (expression.getType())
 			{
 				case NUMBER:
 					result.push(((NumberLeaft) expression).getNumber());
 					break;
 				case OPERATOR:
-					Double auxiliar = ((OperatorLeaft)expression).evaluate(result.pop(),result.pop());
+					Double auxiliar = ((OperatorLeaft) expression).evaluate(result.pop(),
+					               result.pop());
 					result.push(auxiliar);
 			}
-		}		
+		}
 		return result.peek();
 	}
-	
+
 	public List<InfixExpression> getExpressions()
 	{
 		return expressions;
 	}
-
-	
 
 }

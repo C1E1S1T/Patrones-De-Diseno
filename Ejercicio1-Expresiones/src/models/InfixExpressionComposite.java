@@ -33,6 +33,11 @@ public class InfixExpressionComposite extends InfixExpression
 		add(expression);
 	}
 	
+	public InfixExpressionComposite(String expression)
+	{
+		expressions = toInfixExpression(expression);
+	}
+
 	public void add(OperatorLeaft operator, InfixExpression expression)
 	{
 		InfixExpressionComposite infixExpression = new InfixExpressionComposite(operator,expression);
@@ -50,6 +55,17 @@ public class InfixExpressionComposite extends InfixExpression
 	public Double evaluate()
 	{
 		return toPostFix().evaluate();
+	}
+	
+	private List<InfixExpression> toInfixExpression(String expression)
+	{
+		List<InfixExpression> expressions = new ArrayList<>();
+		expressions.add(new NumberLeaft<Integer>(2));
+		expressions.add(new OperatorLeaft(Operator.ADD));
+		expressions.add(new NumberLeaft<Integer>(2));
+		expressions.add(new OperatorLeaft(Operator.MULTIPLY));
+		expressions.add(new NumberLeaft<Integer>(2));
+		return expressions;
 	}
 	
 	@ Override
