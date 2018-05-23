@@ -1,35 +1,35 @@
 package models.tcpConnection;
 
-public class ClosedState extends ConnectionState
+public class StoppedState extends ConnectionState
 {
-	
-	public ClosedState()
+
+	public StoppedState()
 	{
-		setDefaultState(State.CLOSED);
+		setDefaultState(State.STOPPED);
 	}
 	
 	@ Override
 	public void open(Connection connection)
 	{
-		connection.setConnectionState(new OpenState());
+		throw new UnsupportedOperationException();
 	}
 
 	@ Override
 	public void close(Connection connection)
-	{		
-		connection.setConnectionState(new ClosedState());
+	{
+		throw new UnsupportedOperationException();
 	}
 
 	@ Override
 	public void stop(Connection connection)
 	{
-		throw new UnsupportedOperationException();
+		
 	}
 
 	@ Override
 	public void start(Connection connection)
 	{
-		throw new UnsupportedOperationException();
+		connection.setConnectionState(new OpenState());
 	}
 
 	@ Override
@@ -47,7 +47,7 @@ public class ClosedState extends ConnectionState
 	@ Override
 	public void setDefaultState(State state)
 	{
-		this.setState(state);
+		this.setState(state);	
 	}
 
 }

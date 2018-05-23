@@ -1,27 +1,24 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.function.Executable;
 
 import models.tcpConnection.Connection;
 import models.tcpConnection.State;
+import models.tcpConnection.WaitingState;
 
 import static org.junit.Assert.assertEquals;
 
 public class ConnectionTest
 {
-	@ Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	private Connection connection;
 
-	@ Before
-	public void ini()
+	@ BeforeEach
+	void setUp() throws Exception
 	{
 		this.connection = new Connection();
 	}
@@ -49,29 +46,41 @@ public class ConnectionTest
 	@ Test
 	public void testClosedNotSupportedStop()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.stop();
+		Executable closeToStop = () ->
+		{
+			this.connection.stop();
+		};
+		assertThrowsUnsupportedOperationException(closeToStop);
 	}
 
 	@ Test
 	public void testClosedNotSupportedStart()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.start();
+		Executable closeToStart = () ->
+		{
+			this.connection.start();
+		};
+		assertThrowsUnsupportedOperationException(closeToStart);
 	}
 
 	@ Test
 	public void testClosedNotSupportedSubmit()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.submit("");
+		Executable closeToSubmit = () ->
+		{
+			this.connection.submit("");
+		};
+		assertThrowsUnsupportedOperationException(closeToSubmit);
 	}
 
 	@ Test
 	public void testClosedNotSupportedReceive()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.receive(Connection.ACK);
+		Executable closeToReceive = () ->
+		{
+			this.connection.receive(WaitingState.ACK);
+		};
+		assertThrowsUnsupportedOperationException(closeToReceive);
 	}
 
 	@ Test
@@ -83,7 +92,7 @@ public class ConnectionTest
 	}
 
 	@ Test
-	public void testRadyClose()
+	public void testReadyClose()
 	{
 		this.connection.open();
 		this.connection.close();
@@ -117,27 +126,36 @@ public class ConnectionTest
 	@ Test
 	public void testReadyNotSupportedReceive()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.receive(Connection.ACK);
+		Executable openToReceive = () ->
+		{
+			this.connection.open();
+			this.connection.receive(WaitingState.ACK);
+		};
+		assertThrowsUnsupportedOperationException(openToReceive);
 	}
 
 	@ Test
 	public void testStopedNotSupportedOpen()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.stop();
-		this.connection.open();
+		Executable stopToOpen = () ->
+		{
+			this.connection.open();
+			this.connection.stop();
+			this.connection.open();
+		};
+		assertThrowsUnsupportedOperationException(stopToOpen);
 	}
 
 	@ Test
 	public void testStopedNotSupportedClose()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.stop();
-		this.connection.close();
+		Executable stopToClose = () ->
+		{
+			this.connection.open();
+			this.connection.stop();
+			this.connection.close();
+		};
+		assertThrowsUnsupportedOperationException(stopToClose);
 	}
 
 	@ Test
@@ -161,64 +179,86 @@ public class ConnectionTest
 	@ Test
 	public void testStopedNotSupportedSubmit()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.stop();
-		this.connection.submit("");
+		Executable stopToSubmit = () ->
+		{
+			this.connection.open();
+			this.connection.stop();
+			this.connection.submit("");
+		};
+		assertThrowsUnsupportedOperationException(stopToSubmit);
 	}
 
 	@ Test
 	public void testStopedNotSupportedReceive()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.stop();
-		this.connection.receive(Connection.ACK);
+		Executable stopToReceive = () ->
+		{
+			this.connection.open();
+			this.connection.stop();
+			this.connection.receive(WaitingState.ACK);
+		};
+		assertThrowsUnsupportedOperationException(stopToReceive);
 	}
 
 	@ Test
 	public void testWaitingNotSupportedOpen()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.submit("testWaitingNotSupportedOpen");
-		this.connection.open();
+		Executable waitingToOpen = () ->
+		{
+			this.connection.open();
+			this.connection.submit("testWaitingNotSupportedOpen");
+			this.connection.open();
+		};
+		assertThrowsUnsupportedOperationException(waitingToOpen);
 	}
 
 	@ Test
 	public void testWaitingNotSupportedClose()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.submit("testWaitingNotSupportedClose");
-		this.connection.close();
+		Executable waitingToClose = () ->
+		{
+			this.connection.open();
+			this.connection.submit("testWaitingNotSupportedClose");
+			this.connection.close();
+		};
+		assertThrowsUnsupportedOperationException(waitingToClose);
 	}
 
 	@ Test
 	public void testWaitingNotSupportedStop()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.submit("testWaitingNotSupportedStop");
-		this.connection.stop();
+		Executable waitingToStop = () ->
+		{
+			this.connection.open();
+			this.connection.submit("testWaitingNotSupportedStop");
+			this.connection.stop();
+		};
+		assertThrowsUnsupportedOperationException(waitingToStop);
 	}
 
 	@ Test
 	public void testWaitingNotSupportedStart()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.submit("testWaitingNotSupportedStart");
-		this.connection.start();
+		Executable waitingToStart = () ->
+		{
+			this.connection.open();
+			this.connection.submit("testWaitingNotSupportedOpen");
+			this.connection.start();
+		};
+		assertThrowsUnsupportedOperationException(waitingToStart);
+		
 	}
 
 	@ Test
 	public void testWaitingNotSupportedSubmit()
 	{
-		exception.expect(UnsupportedOperationException.class);
-		this.connection.open();
-		this.connection.submit("testWaitingNotSupportedSubmit");
-		this.connection.submit("");
+		Executable waitingToSubmit = () ->
+		{
+			this.connection.open();
+			this.connection.submit("testWaitingNotSupportedSubmit");
+			this.connection.submit("");
+		};
+		assertThrowsUnsupportedOperationException(waitingToSubmit);	
 	}
 
 	@ Test
@@ -226,7 +266,7 @@ public class ConnectionTest
 	{
 		this.connection.open();
 		this.connection.submit("testWaitingReceiveACK");
-		this.connection.receive(Connection.ACK);
+		this.connection.receive(WaitingState.ACK);
 		assertEquals(State.READY, this.connection.getState());
 	}
 
@@ -235,8 +275,15 @@ public class ConnectionTest
 	{
 		this.connection.open();
 		this.connection.submit("testWaitingReceiveError");
-		this.connection.receive(Connection.ACK+1);
+		this.connection.receive(WaitingState.ACK+1);
 		assertEquals(State.CLOSED, this.connection.getState());
 	}
 
+	private void assertThrowsUnsupportedOperationException(Executable operation)
+	{
+		Class<UnsupportedOperationException> expectedException = UnsupportedOperationException.class;
+		assertThrows(expectedException, operation);
+	}
+
+	
 }

@@ -2,7 +2,7 @@ package models.tcpConnection;
 
 public class Connection
 {
-	public static final int ACK = 0;
+	
 	public ConnectionState connectionState;
 	
 	public Connection()
