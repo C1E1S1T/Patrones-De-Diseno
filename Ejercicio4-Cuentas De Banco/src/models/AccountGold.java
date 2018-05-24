@@ -1,12 +1,12 @@
 package models;
 
-public class AccountYoung extends Account
+public class AccountGold extends Account
 {
 
 	@ Override
 	public double defineInterest()
 	{
-		return 1.0;
+		return 2.0;
 	}
 
 }

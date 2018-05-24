@@ -2,13 +2,13 @@ package models;
 
 public abstract class Account
 {
-	private int interest;
+	private double interest;
 	
 	public Account()
 	{
 		interest = defineInterest();
 	}
-	public abstract int defineInterest();
+	public abstract double defineInterest();
 	
 	public String show()
 	{
