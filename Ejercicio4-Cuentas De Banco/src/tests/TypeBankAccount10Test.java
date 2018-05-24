@@ -1,52 +1,33 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import models.Account;
-import models.CreditCart;
-import models.Debit;
 import models.TypeBankAccount10;
-import models.TypeBankAccountSigleton;
+import models.TypeBankAccountFactory;
 
-class TypeBankAccount10Test
+class TypeBankAccount10Test extends TypeBankAccountTest
 {
-	private static TypeBankAccountSigleton typeBankAccount;
 
-	@ BeforeAll
-	static void setUpBeforeClass() throws Exception
+	@ Override
+	public TypeBankAccountFactory defineFactory()
 	{
-		TypeBankAccountSigleton.setFactory(new TypeBankAccount10());
-		typeBankAccount = TypeBankAccountSigleton.getInstance();
-	}
-	
-	@ Test
-	void testShow_caseAccount()
-	{
-		Account account = typeBankAccount.getAccount();
-		String actual = account.show();
-		String expected = "1.5%";
-		assertEquals(expected, actual);
+		return new TypeBankAccount10();
 	}
 
-	@ Test
-	void testShow_caseDebit()
+	@ Override
+	public String testShow_caseAccount_defineExpected()
 	{
-		Debit debit = typeBankAccount.getDebit();
-		String actual = debit.show();
-		String expected = "Gratuita";
-		assertEquals(expected, actual);
+		return "1.5%";
 	}
 
-	@ Test
-	void testShow_caseCreditCard()
+	@ Override
+	public String testShow_caseDebit_defineExpected()
 	{
-		CreditCart creditCart = typeBankAccount.getCreditCard();
-		String actual = creditCart.show();
-		String expected = "10 Euros Max. 2000 E";
-		assertEquals(expected, actual);
+		return "Gratuita";
+	}
+
+	@ Override
+	public String testShow_caseCreditCard_defineExpected()
+	{
+		return "10 Euros Max. 2000 E";
 	}
 
 }
