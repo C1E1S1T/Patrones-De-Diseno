@@ -1,6 +1,6 @@
 package views.soldier;
 
-public class WithoutAmmoHandler extends ShootHandler
+public class WithoutAmmoHandler extends GunHandler
 {
 
 	public WithoutAmmoHandler(String name)

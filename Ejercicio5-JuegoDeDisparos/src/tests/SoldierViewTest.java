@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import controllers.ShootController;
 import models.Ammo;
 import models.Shotgun;
-import views.soldier.ShootHandler;
+import views.soldier.GunHandler;
 import views.soldier.SoldierView;
 
 class SoldierViewTest
@@ -31,7 +31,7 @@ class SoldierViewTest
 	public void setDown()
 	{
 		System.setOut(System.out);
-		ShootHandler.__destruct();
+		GunHandler.__destruct();
 		System.gc();
 	}
 

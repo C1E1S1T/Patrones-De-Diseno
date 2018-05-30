@@ -19,7 +19,7 @@ class ShootControllerTest
 	{
 		ShootController controller = new ShootController(new Shotgun(new Ammo(2,10)));
 		int expected = new Ammo(2,9).getTotalBullets();
-		int actual = controller.shoot().getTotalBullets();
+		int actual = controller.control().getTotalBullets();
 		assertEquals(expected,actual);
 	}
 	
@@ -29,7 +29,7 @@ class ShootControllerTest
 		ShootController controller = new ShootController(new Nullgun(null));
 		Executable shoot = () ->
 		{
-			controller.shoot();
+			controller.control();
 		};
 		assertThrowsUnsupportedOperationException(shoot);
 	}
@@ -39,6 +39,7 @@ class ShootControllerTest
 		Class<UnsupportedOperationException> expectedException = UnsupportedOperationException.class;
 		assertThrows(expectedException, operation);
 	}
+	
 
 	
 }

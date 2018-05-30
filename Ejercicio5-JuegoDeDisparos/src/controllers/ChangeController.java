@@ -4,7 +4,7 @@ import models.Ammo;
 import models.Gun;
 
 
-public class ChangeController extends GunController
+public class ChangeController extends OperationGunController
 {
 
 	public ChangeController(Gun gun)
@@ -28,6 +28,18 @@ public class ChangeController extends GunController
 	public void accept(GunControllerVisitor gunControllerVisitor)
 	{
 		gunControllerVisitor.visit(this);
+	}
+
+	@ Override
+	public Ammo control()
+	{
+		return null;
+	}
+
+	@ Override
+	public String toString()
+	{
+		return null;
 	}
 
 }

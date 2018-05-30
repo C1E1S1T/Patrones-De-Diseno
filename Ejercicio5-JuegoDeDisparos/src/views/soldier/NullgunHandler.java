@@ -1,6 +1,6 @@
 package views.soldier;
 
-class NullgunHandler extends ShootHandler
+class NullgunHandler extends GunHandler
 {
 
 	public NullgunHandler(String name)
@@ -13,7 +13,7 @@ class NullgunHandler extends ShootHandler
 	{
 		try
 		{
-			setAmmo(getShootController().shoot());
+			setAmmo(getGunController().control());
 		}
 		catch (UnsupportedOperationException exception)
 		{

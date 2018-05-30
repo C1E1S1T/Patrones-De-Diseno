@@ -1,17 +1,15 @@
 package views.soldier;
 
-
 import controllers.OperationGunController;
 
-class ShootView extends OperationGunView
+public class ReloadView extends OperationGunView
 {
 
-	public ShootView(OperationGunController controller)
+	public ReloadView(OperationGunController controller)
 	{
 		super(controller);
 	}
 
 
 
-	
 }

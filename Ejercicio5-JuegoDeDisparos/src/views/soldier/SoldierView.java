@@ -2,7 +2,7 @@ package views.soldier;
 
 import controllers.ChangeController;
 import controllers.GunControllerVisitor;
-import controllers.ReloadController;
+import controllers.ReloadBulletsController;
 import controllers.ShootController;
 
 public class SoldierView implements GunControllerVisitor
@@ -18,13 +18,12 @@ public class SoldierView implements GunControllerVisitor
 	public void visit(ChangeController changeController)
 	{
 		
-
 	}
 
 	@ Override
-	public void visit(ReloadController reloadController)
+	public void visit(ReloadBulletsController reloadController)
 	{
-		
+		new ReloadView(reloadController).interact(name);
 	}
 
 	@ Override

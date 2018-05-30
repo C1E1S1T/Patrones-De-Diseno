@@ -1,6 +1,6 @@
 package views.soldier;
 
-class GunWithAmmoHandler extends ShootHandler
+class GunWithAmmoHandler extends GunHandler
 {
 
 	public GunWithAmmoHandler(String name)
@@ -17,7 +17,7 @@ class GunWithAmmoHandler extends ShootHandler
 	@ Override
 	public void processShoot()
 	{
-		setMessage(" dispara Municion: "+getAmmo().toString());
+		setMessage(getGunController().toString()+getAmmo().toString());
 		this.setIsCapturedEvent(true);
 	}
 

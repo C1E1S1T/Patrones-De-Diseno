@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import controllers.ReloadController;
+import controllers.ReloadBulletsController;
 import models.Ammo;
 import models.Shotgun;
 
@@ -15,19 +15,19 @@ class ReloadControllerTest
 	@ Test
 	void testReload_caseGun()
 	{
-		ReloadController controller = new ReloadController(new Shotgun(new Ammo(2,10)));
+		ReloadBulletsController controller = new ReloadBulletsController(new Shotgun(new Ammo(2,10)));
 		int expected = new Ammo(1,10).getTotalBullets();
-		int actual = controller.reload().getTotalBullets();
+		int actual = controller.control().getTotalBullets();
 		assertEquals(expected,actual);
 	}
 
 	@Test
 	void testShoot_caseNullGun()
 	{
-		ReloadController controller = new ReloadController();
+		ReloadBulletsController controller = new ReloadBulletsController();
 		Executable reload = () ->
 		{
-			controller.reload();
+			controller.control();
 		};
 		assertThrowsUnsupportedOperationException(reload);
 	}

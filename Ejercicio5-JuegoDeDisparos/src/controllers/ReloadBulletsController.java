@@ -3,20 +3,21 @@ package controllers;
 import models.Ammo;
 import models.Gun;
 
-public class ReloadController extends GunController
+public class ReloadBulletsController extends OperationGunController
 {
 
-	public ReloadController(Gun gun)
+	public ReloadBulletsController(Gun gun)
 	{
 		super(gun);
 	}
 
-	public ReloadController()
+	public ReloadBulletsController()
 	{
 		super();
 	}
 
-	public Ammo reload() throws UnsupportedOperationException
+	@Override
+	public Ammo control() throws UnsupportedOperationException
 	{
 		return getGun().reload();
 	}
@@ -30,6 +31,12 @@ public class ReloadController extends GunController
 	public void accept(GunControllerVisitor gunControllerVisitor)
 	{
 		gunControllerVisitor.visit(this);
+	}
+
+	@ Override
+	public String toString()
+	{
+		return " Recargando municion ";
 	}
 
 }

@@ -3,7 +3,7 @@ package controllers;
 import models.Ammo;
 import models.Gun;
 
-public class ShootController extends GunController
+public class ShootController extends OperationGunController
 {
 
 	public ShootController(Gun gun)
@@ -16,7 +16,8 @@ public class ShootController extends GunController
 		
 	}
 
-	public Ammo shoot() throws UnsupportedOperationException
+	@ Override
+	public Ammo control() throws UnsupportedOperationException
 	{
 		return getGun().shoot();
 	}
@@ -25,6 +26,13 @@ public class ShootController extends GunController
 	public void accept(GunControllerVisitor gunControllerVisitor)
 	{
 		gunControllerVisitor.visit(this);
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return " dispara Municion: ";
 	}
 	
 }

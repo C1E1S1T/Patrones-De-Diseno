@@ -2,32 +2,36 @@ package views.soldier;
 
 import com.IO;
 
-import controllers.ShootController;
+import controllers.OperationGunController;
 import models.Ammo;
 
-public abstract class ShootHandler
+public abstract class GunHandler
 {
-	protected ShootHandler nextShootHandler;
-	private static ShootController shootController;
+	protected GunHandler nextShootHandler;
+	private static OperationGunController gunController;
 	private String name;
 	private static Ammo ammo;
 	private boolean isCapturedEvent;
 	private String message;
 	
-	public ShootHandler(String name)
+	public GunHandler(String name, OperationGunController gunController)
+	{
+		this(name);
+		setGunController(gunController);
+	}
+	
+	public GunHandler(String name)
 	{
 		this.name = name;
-		setAmmo(null);
-		setShootController(null);
 		this.isCapturedEvent = false;
 	}
 
-	protected ShootHandler getNextShootHandler()
+	protected GunHandler getNextShootHandler()
 	{
 		return this.nextShootHandler;
 	}
 
-	public void setNextShootHandler(ShootHandler nextShootHandler)
+	public void setNextShootHandler(GunHandler nextShootHandler)
 	{
 		this.nextShootHandler = nextShootHandler;
 	}
@@ -75,9 +79,9 @@ public abstract class ShootHandler
 		this.isCapturedEvent = isCapturedEvent;
 	}
 
-	protected ShootController getShootController()
+	protected OperationGunController getGunController()
 	{
-		return shootController;
+		return gunController;
 	}
 
 	protected String getName()
@@ -92,18 +96,18 @@ public abstract class ShootHandler
 
 	public void setAmmo(Ammo ammo)
 	{
-		ShootHandler.ammo = ammo;
+		GunHandler.ammo = ammo;
 	}
 
-	public void setShootController(ShootController shootController)
+	public void setGunController(OperationGunController gunController)
 	{
-		ShootHandler.shootController = shootController;
+		GunHandler.gunController = gunController;
 	}
 
 	public static void __destruct()
 	{
-		ShootHandler.shootController=null;
-		ShootHandler.ammo=null;
+		GunHandler.gunController=null;
+		GunHandler.ammo=null;
 	}
 	
 }

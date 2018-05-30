@@ -1,18 +1,19 @@
 package controllers;
 
+import models.Ammo;
 import models.Gun;
 import models.Nullgun;
 
-public abstract class GunController
+public abstract class OperationGunController
 {
 	public static Gun gun = new Nullgun();
 
-	public GunController()
+	public OperationGunController()
 	{
 		
 	}
 	
-	public GunController(Gun gun)
+	public OperationGunController(Gun gun)
 	{
 		setGun(gun);
 	}
@@ -21,7 +22,7 @@ public abstract class GunController
 	{
 		if(gun != null)
 		{
-			GunController.gun=gun;
+			OperationGunController.gun=gun;
 		}
 	}
 	
@@ -30,8 +31,10 @@ public abstract class GunController
 		return gun;
 	}
 	
+	public abstract Ammo control();
 	
 	public abstract void accept(GunControllerVisitor gunControllerVisitor);
 	
+	public abstract String toString();
 	
 }
