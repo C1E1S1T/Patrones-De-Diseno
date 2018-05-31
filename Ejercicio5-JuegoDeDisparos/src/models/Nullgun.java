@@ -5,7 +5,7 @@ public class Nullgun extends Gun
 
 	public Nullgun(Ammo ammo)
 	{
-		super(ammo);
+		this();
 	}
 	
 	public Nullgun()

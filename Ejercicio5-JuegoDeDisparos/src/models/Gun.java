@@ -42,5 +42,10 @@ public abstract class Gun
 			this.ammo = ammo;
 		}
 	}
+
+	public Ammo getAmmo()
+	{
+		return ammo;
+	}
 	
 }

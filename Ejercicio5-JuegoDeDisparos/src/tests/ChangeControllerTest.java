@@ -16,7 +16,7 @@ class ChangeControllerTest
 	void testChange_caseShotgun()
 	{
 		ChangeController controller = new ChangeController();
-		Gun actual = controller.change(new Shotgun(),new Ammo(2,10));
+		Gun actual = controller.change(new Shotgun(new Ammo(2,10)));
 		assertTrue(actual instanceof Shotgun);
 	}
 
