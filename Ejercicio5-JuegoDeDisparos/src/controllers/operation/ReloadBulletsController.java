@@ -1,5 +1,7 @@
-package controllers;
+package controllers.operation;
 
+import controllers.GunControllerVisitor;
+import controllers.OperationGunController;
 import models.Ammo;
 import models.Gun;
 
@@ -22,11 +24,6 @@ public class ReloadBulletsController extends OperationGunController
 		return getGun().reload();
 	}
 
-	public Ammo reload(int cartridges)
-	{
-		return getGun().reload(cartridges);
-	}
-	
 	@ Override
 	public void accept(GunControllerVisitor gunControllerVisitor)
 	{

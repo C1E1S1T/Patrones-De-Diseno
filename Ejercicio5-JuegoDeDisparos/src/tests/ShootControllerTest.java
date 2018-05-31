@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import controllers.ShootController;
+import controllers.operation.ShootController;
 import models.Ammo;
 import models.Nullgun;
 import models.Shotgun;

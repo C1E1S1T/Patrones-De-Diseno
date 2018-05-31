@@ -2,10 +2,10 @@ package views.soldier;
 
 import com.IO;
 
-import controllers.ChangeController;
-import controllers.ReloadBulletsController;
-import controllers.ShootController;
-import controllers.StartController;
+import controllers.operation.ChangeController;
+import controllers.operation.ReloadBulletsController;
+import controllers.operation.ShootController;
+import controllers.operation.StartController;
 import models.Gun;
 
 public class GameView

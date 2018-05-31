@@ -1,9 +1,9 @@
 package views.soldier;
 
-import controllers.ChangeController;
 import controllers.GunControllerVisitor;
-import controllers.ReloadBulletsController;
-import controllers.ShootController;
+import controllers.operation.ChangeController;
+import controllers.operation.ReloadBulletsController;
+import controllers.operation.ShootController;
 
 public class SoldierView implements GunControllerVisitor
 {

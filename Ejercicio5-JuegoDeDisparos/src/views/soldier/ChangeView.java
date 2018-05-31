@@ -2,7 +2,7 @@ package views.soldier;
 
 import com.IO;
 
-import controllers.ChangeController;
+import controllers.operation.ChangeController;
 import models.Gun;
 
 public class ChangeView

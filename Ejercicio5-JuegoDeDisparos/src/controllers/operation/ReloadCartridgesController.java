@@ -1,5 +1,7 @@
-package controllers;
+package controllers.operation;
 
+import controllers.GunControllerVisitor;
+import controllers.OperationGunController;
 import models.Ammo;
 
 public class ReloadCartridgesController extends OperationGunController

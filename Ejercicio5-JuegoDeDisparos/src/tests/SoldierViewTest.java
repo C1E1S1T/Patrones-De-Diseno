@@ -9,7 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import controllers.ShootController;
+import controllers.operation.ShootController;
 import models.Ammo;
 import models.Shotgun;
 import views.soldier.GunHandler;

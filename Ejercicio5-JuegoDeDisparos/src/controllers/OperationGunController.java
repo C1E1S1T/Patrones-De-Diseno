@@ -6,7 +6,7 @@ import models.Nullgun;
 
 public abstract class OperationGunController implements GunController
 {
-	public static Gun gun = new Nullgun();
+	private static Gun gun = new Nullgun();
 
 	public OperationGunController()
 	{
@@ -18,7 +18,7 @@ public abstract class OperationGunController implements GunController
 		setGun(gun);
 	}
 	
-	protected static void setGun(Gun gun)
+	public static void setGun(Gun gun)
 	{
 		if(gun != null)
 		{
@@ -26,7 +26,7 @@ public abstract class OperationGunController implements GunController
 		}
 	}
 	
-	public Gun getGun()
+	public static Gun getGun()
 	{
 		return gun;
 	}

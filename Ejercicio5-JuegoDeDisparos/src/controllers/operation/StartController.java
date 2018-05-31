@@ -1,4 +1,4 @@
-package controllers;
+package controllers.operation;
 
 import models.Ammo;
 import models.Gun;
