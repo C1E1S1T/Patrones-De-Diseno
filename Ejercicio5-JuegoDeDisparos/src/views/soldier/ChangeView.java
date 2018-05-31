@@ -28,7 +28,14 @@ public class ChangeView
 		int option = io.readInt("Ingrese el arma 1. Escopeta ");
 		Gun gun = GunBuilder.getBuilder(option).build(cartridges, bullets);
 		changeController.change(gun);
-		io.writeln(name + " he cambiado de arma: " + gun.toString() + " con municion: " + gun.getAmmo().toString());
+		io.writeln(getUserMessage(name, gun));
+	}
+
+	private String getUserMessage(String name, Gun gun)
+	{
+		String changeGun = " he cambiado de arma: "+gun.toString();
+		String withAmmo = " con municion: "+gun.getAmmo().toString();
+		return name+changeGun+withAmmo;
 	}
 
 }
