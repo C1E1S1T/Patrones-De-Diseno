@@ -19,7 +19,7 @@ public class ChangeController extends OperationGunController
 
 	public Gun change(Gun gun, Ammo ammo)
 	{
-		getGun().setAmmo(ammo);
+		gun.setAmmo(ammo);
 		setGun(gun);
 		return getGun();
 	}

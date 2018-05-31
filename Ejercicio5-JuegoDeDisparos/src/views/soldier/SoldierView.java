@@ -17,7 +17,7 @@ public class SoldierView implements GunControllerVisitor
 	@ Override
 	public void visit(ChangeController changeController)
 	{
-		
+		new ChangeView(changeController).interact(name);
 	}
 
 	@ Override
