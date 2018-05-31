@@ -9,7 +9,7 @@ class NullgunHandler extends GunHandler
 	}
 
 	@ Override
-	public void processShoot()
+	public void process()
 	{
 		try
 		{

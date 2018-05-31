@@ -15,7 +15,7 @@ class GunWithAmmoHandler extends GunHandler
 	}
 
 	@ Override
-	public void processShoot()
+	public void process()
 	{
 		setMessage(getGunController().toString()+getAmmo().toString());
 		this.setIsCapturedEvent(true);

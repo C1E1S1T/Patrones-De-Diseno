@@ -38,7 +38,7 @@ public abstract class GunHandler
 
 	public void handleRequest()
 	{
-		processShoot();
+		process();
 		if (isHandlerCapturedEvent())
 		{
 			IO io = new IO();
@@ -72,7 +72,7 @@ public abstract class GunHandler
 		return message;
 	}
 	
-	protected abstract void processShoot();
+	protected abstract void process();
 
 	protected void setIsCapturedEvent(boolean isCapturedEvent)
 	{

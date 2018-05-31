@@ -4,7 +4,7 @@ import models.Ammo;
 import models.Gun;
 import models.Nullgun;
 
-public abstract class OperationGunController
+public abstract class OperationGunController implements GunController
 {
 	public static Gun gun = new Nullgun();
 
@@ -18,7 +18,7 @@ public abstract class OperationGunController
 		setGun(gun);
 	}
 	
-	protected void setGun(Gun gun)
+	protected static void setGun(Gun gun)
 	{
 		if(gun != null)
 		{
@@ -32,9 +32,7 @@ public abstract class OperationGunController
 	}
 	
 	public abstract Ammo control();
-	
-	public abstract void accept(GunControllerVisitor gunControllerVisitor);
-	
+		
 	public abstract String toString();
 	
 }

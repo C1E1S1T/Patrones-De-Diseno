@@ -15,7 +15,7 @@ public class WithoutAmmoHandler extends GunHandler
 	}
 
 	@ Override
-	public void processShoot()
+	public void process()
 	{
 		if (getAmmo().gunWithoutAmmo())
 		{
